@@ -7,8 +7,8 @@ const DataPage = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-      const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+      const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL as string;
+      const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string;
 
       try {
         const response = await fetch(`${supabaseUrl}/rest/v1/users?select=*`, {
@@ -28,7 +28,7 @@ const DataPage = () => {
         setData(result);
 		console.log('result:', result);
       } catch (error) {
-        setError(error.message);
+        setError((error as Error).message);
       }
     };
 
